@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import { execSync } from 'node:child_process';
@@ -71,6 +72,9 @@ const clstrDark = {
 export default defineConfig({
     site: 'https://clstr.io',
     devToolbar: { enabled: false },
+    markdown: {
+        processor: unified(),
+    },
     integrations: [
         starlight({
         title: 'clstr.io',
